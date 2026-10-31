@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rag-showcase"
+version = "0.1.0"
+description = "Hybrid (vector + keyword) RAG with ACL filtering, RRF, reranking and grounded generation"
+requires-python = ">=3.10"
+dependencies = [
+  "tiktoken>=0.7",
+  "openai>=1.40",
+  "qdrant-client>=1.12,<2",
+  "elasticsearch>=8.15,<9",
+  "tenacity>=8.2",
+  "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+cohere = ["cohere>=5.11"]
+bge = ["sentence-transformers>=3.0"]
+dev = ["pytest>=8"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
